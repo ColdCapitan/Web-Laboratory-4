@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Суші хаус - Меню</title>
+    <link rel="stylesheet" href="../styles/style_menu.css">
+    <link rel="icon" href="../images/Піктограма.jpg" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <img class="header-logo" src="../images/logo.png" alt="Логотип">
+        <input id="menu__toggle" class="menu__toggle" type="checkbox"></input>
+        <label class="menu__btn" for="menu__toggle">
+            <span></span>
+        </label>
+        <nav class="menu__box">
+            <ul class="menu">
+                <li><a href="../index.html"> Головна сторінка </a></li>
+                <li><a href="../html/about.html"> Про нас </a></li>
+                <li class="dropdown">
+                    <a href="../html/menu.html" class="active">Меню &#9660;</a>
+                    <div class="dropdown-content">
+                        <a href="../html/menu.html">Роли</a>
+                        <a href="../html/menu.html">Напої</a>
+                        <a href="../html/menu.html">Десерти</a>
+                    </div>
+                <li><a href="../html/reservation.html">Бронювання столика</a></li>
+                <li><a href="html/events.html">
+                        <img class="feather" src="../images/перо.jpg" alt="Події">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <section>
+            <div class="full-menu">
+                <h1>Наше Меню</h1>
+            </div>
+            <div class="filter-panel">
+                <label>Фільтр за категорією:</label>
+                <button class="filter-button" data-category="all">Всі позиції</button>
+                <button class="filter-button" data-category="roll">Роли</button>
+                <button class="filter-button" data-category="drinks">Напої</button>
+                <button class="filter-button" data-category="deserts">Десерти</button>
+            </div>
+
+            <button id="editPricesButton" onclick="updatePrice()" class="admin">Редагувати ціни</button>
+
+            <ul class="menu-list" id="filter-button"></ul>
+            <button class="cart-button" onclick="showCart()">
+                <img src="../images/white-bin.png" alt="Картинка кнопки CART">
+            </button>
+            
+
+            <div id="cart">
+
+            <p style="font-size:50px;">КОШИК</p> 
+            <div id="cart-items"></div>
+        </div>
+        <button id="pieChartButton">Кругова діаграма</button>
+        <button id="histogramButton">Гістограма</button>
+        <button id="lineChartButton">Графік</button>
+
+        <h2> Статистика найбільш популярних товарів</h2>
+        <div>
+            <canvas id="pieChartCanvas"  class="chart-container"></canvas>
+            <canvas id="histogramCanvas" class="chart-container"></canvas>
+            <canvas id="lineChartCanvas" class="chart-container"></canvas>
+        </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="column_text">
+            <p>Суші хаус</p>
+            <p>Їжі для тіла недостатньо. Має бути їжа для душі.</p>
+        </div>
+
+        <ul class="column-info-menu">
+            <li>
+                <nav>
+                    <h6>Головне меню</h6>
+                    <ul>
+                        <li><a href="../html/about.html"> Про нас </a></li>
+                        <li><a href="../html/menu.html">Меню</a></li>
+                        <li><a href="../html/events.html">Події</a></li>
+                    </ul>
+                </nav>
+            </li>
+        </ul>
+
+        <ul class="column-info">
+            <li>
+                <nav>
+                    <h6>Інформація</h6>
+                    <ul>
+                        <li><a href="../html/about.html"> Контакти </a></li>
+                        <li><a href="../html/reservation.html">Бронювання</a></li>
+                    </ul>
+                </nav>
+            </li>
+        </ul>
+
+        <div class="column-adress">
+            <h6>Адреса</h6>
+            <a href="https://maps.app.goo.gl/TcUZKX6rT6oP2mjXA" target="_blank">
+                <address>м. Чернівці, вул. Головна, 265А</address>
+            </a>
+        </div>
+        
+
+    </footer> 
+    <script src="../scripts/filter.js"></script>
+   
+</body>
+
+</html>

@@ -1,0 +1,457 @@
+/* під'єднання шрифтів */
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'TLHeader';
+    src: url('../fonts/TLHeader.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Acme';
+    src: url('../fonts/Acme.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins.ttf') format('truetype');
+}
+
+/* псевдоклас для змінних */
+:root {
+    /* змінні для шрифтів*/
+    --font-family-poppins: 'Poppins';
+    --font-family-lato: 'Lato';
+    --font-family-montserrat: 'Montserrat';
+    --font-family-tlheader: 'TLHeader';
+
+    /* змінні для кольорів */
+    --primary-color: #2f2e2c;
+    --color-secondary-text: #E8A639;
+    --background-color: #000000b3;
+    --color-main-text: #ffffff;
+
+    /* змінні для розташування та розмірів */
+    --align-right: right;
+    --align-center: center;
+    --position: absolute;
+    --base-font-size: 17px;
+}
+
+/* створення інформаційної панелі */
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: var(--background-color);
+    z-index: 10;
+    transition: transform 0.3s;
+}
+
+/* текст посилань */
+header a {
+    text-decoration: none;
+    color: var(--color-main-text);
+    transition: 0.25s ease;
+    margin-right: 1.3rem;
+}
+
+/* коректне задання елементів списку */
+header li {
+    display: inline;
+    font-family: var(--font-family-lato);
+    font-size: 1.25rem;
+    text-align: var(--align-right);
+    text-decoration: none;
+    margin: 0 0.75em 0 0.75em;
+}
+
+header ul:hover a {
+    color: #341f04;
+}
+
+header ul:hover a:hover {
+    color: var(--color-secondary-text);
+    box-shadow: 0 2px 0 0 currentColor;
+}
+
+.active {
+    color: var(--color-secondary-text);
+}
+
+.header-logo {
+    position: relative;
+    top: 0.7rem;
+    left: 90%; /* Змініть це значення відповідно до вашого випадку */
+}
+
+.feather {
+    width: 3%;
+    position: relative; /
+}
+
+/* Випадний список */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 10rem;
+    z-index: 1;
+    transition: 0.1s ease;
+    background-color: #e8a539a9;
+    top: 100%;
+    left: -30%;
+}
+
+.dropdown-content a {
+    color: #000000;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-content a:hover {
+    color: #000000;
+}
+
+/* 3 рисочки для гамбургер меню */
+.menu__btn {
+    cursor: pointer;
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    width: 36px;
+    height: 66px;
+    z-index: 23;
+}
+
+.menu__btn>span,
+.menu__btn>span::before,
+.menu__btn>span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    transition-duration: .25s;
+}
+
+.menu__btn>span::before {
+    content: '';
+    top: -8px;
+}
+
+.menu__btn>span::after {
+    content: '';
+    top: 8px;
+}
+
+/* приховане меню, яке з'явиться, коли екран буде меншим */
+.menu__box {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    transition-duration: .25s;
+}
+
+/* для малих екранів */
+@media screen and (max-width: 1000px) {
+
+    .header a {
+        font-size: 2rem;
+    }
+
+    .menu__toggle {
+        display: block;
+        visibility: hidden;
+    }
+
+    .menu__btn {
+        display: block;
+    }
+
+    #menu__toggle:checked+.menu__btn~.menu__box {
+        left: 0;
+    }
+
+    .menu__box ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 5vw;
+    }
+
+}
+
+/* для пристроїв 1001 піксель і більше */
+@media screen and (min-width: 1001px) {
+    .menu__toggle {
+        display: none;
+
+    }
+
+    .menu__btn {
+        display: none;
+    }
+
+    .menu__box {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        top: -42%;
+        left: 0;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    header a {
+        color: var(--color-main-text);
+        margin-right: 2vw;
+    }
+
+    header li {
+        margin: 0 1em 0 0;
+    }
+}
+
+/* усунення відступів та задання батьківського елемента для розміру */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-size: var(--base-font-size);
+}
+
+.about {
+    padding-top: 1%;
+    background-color: var(--primary-color);
+    padding: 0;
+    font-size: 1rem;
+}
+
+.title {
+    background-image: url('../images/Background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    color: var(--color-main-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title h1 {
+    text-align: var(--align-center);
+    font-family: var(--font-family-tlheader);
+    font-size: 5rem;
+}
+
+.title q {
+    text-align: var(--align-center);
+    font-family: var(--font-family-montserrat);
+    top: 70%;
+    font-size: 2rem;
+    position: var(--position);
+    color: var(--color-secondary-text);
+}
+
+.main_story h2 {
+    font-family: var(--font-family-lato);
+    font-size: 2.75rem;
+    text-align: var(--align-center);
+}
+
+.about p {
+    font-family: var(--font-family-montserrat);
+    font-size: 1.25rem;
+}
+
+.highlight {
+    color: var(--color-secondary-text);
+}
+
+.main_story {
+    color: #c3c2c2;
+}
+
+/* стилізація тексту та фону для бронювальної секції */
+.contact-section {
+    background-image: url(../images/reservation.jpg);
+    width: 100%;
+    height: 800px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-section::before {
+    content: "";
+    position: var(--position);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #808080c4;
+    z-index: 0;
+}
+
+.contact-section * {
+    z-index: 1;
+    text-align: center;
+    font-family: var(--font-family-montserrat);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: inherit;
+}
+
+.contact-section h2 {
+    font-size: 3.75rem;
+    text-decoration-line: underline;
+    color: inherit;
+}
+
+.contact-section p {
+    font-size: 1.40625rem;
+}
+
+.contact-section .phone {
+    font-size: 0.859375rem;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+/* Стилізація для меню */
+ul.menu {
+    list-style: none;
+    padding: 0;
+}
+
+ul.menu li {
+    display: inline;
+    margin-right: 20px;
+}
+
+ul.menu li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+
+}
+
+ul.menu li a:hover {
+    color: #E8A639;
+}
+
+@media screen and (max-width: 700px) {
+
+    .title h1 {
+        font-size: 2rem;
+    }
+
+    .title q {
+        font-size: 1rem;
+    }
+
+    .main_story h2 {
+        font-size: 2rem;
+    }
+
+    .about p {
+        font-size: 0.9rem;
+    }
+
+    .contact-section h2 {
+        font-size: 2rem;
+    }
+}
+
+/* навійгаційна панель внизу сторінки */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    font-family: var(--font-family-montserrat);
+    font-size: 1rem;
+    color: var(--color-main-text);
+}
+
+.footer>div,
+.footer>ul {
+    flex: 1;
+    max-width: 45%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.footer h6 {
+    font-family: var(--font-family-poppins);
+    margin-top: 0;
+    font-size: 1.5625rem;
+    margin-bottom: 0.2rem;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.footer ul li {
+    margin: 0.3125rem;
+}
+
+.footer a {
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 700px) {
+    .footer {
+        font-size: 0.8rem;
+    }
+
+    .footer h6 {
+        font-size: 0.7rem;
+    }
+
+    .footer ul li {
+        margin: 0.2rem;
+    }
+
+    .footer p {
+        font-size: 0.6rem;
+    }
+}

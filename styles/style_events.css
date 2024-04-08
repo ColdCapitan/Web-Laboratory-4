@@ -1,0 +1,280 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'TLHeader';
+    src: url('../fonts/TLHeader.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Acme';
+    src: url('../fonts/Acme.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins.ttf') format('truetype');
+}
+
+/* псевдоклас для змінних */
+:root {
+    /* змінні для шрифтів*/
+    --font-family-poppins: 'Poppins';
+    --font-family-lato: 'Lato';
+    --font-family-montserrat: 'Montserrat';
+    --font-family-acme: 'Acme';
+    --font-family-tlheader: 'TLHeader';
+    /* змінні для кольорів */
+    --background-color: #000000b3;
+    --primary-color: #A6E3E9;
+    --color-for-menu: #CBF1F5;
+    --color-main-text: #ffffff;
+    --color-secondary-text: #E8A639;
+    /* змінні для розташування та розмірів */
+    --align-right: right;
+    --align-center: center;
+    --position-absolute: absolute;
+    --parrent: 16px;
+}
+
+/* створення інформаційної панелі */
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: var(--background-color);
+    z-index: 10;
+    transition: transform 0.3s;
+}
+
+/* текст посилань */
+header a {
+    text-decoration: none;
+    color: var(--color-main-text);
+    transition: 0.25s ease;
+    margin-right: 1.3rem;
+}
+
+/* коректне задання елементів списку */
+header li {
+    display: inline;
+    font-family: var(--font-family-lato);
+    font-size: 1.25rem;
+    text-align: var(--align-right);
+    text-decoration: none;
+    margin: 0 0.75em 0 0.75em;
+}
+
+header ul:hover a {
+    color: #341f04;
+}
+
+header ul:hover a:hover {
+    color: var(--color-secondary-text);
+    box-shadow: 0 2px 0 0 currentColor;
+}
+
+.active {
+    color: var(--color-secondary-text);
+}
+
+.header-logo {
+    position: relative;
+    top: 0.7rem;
+    left: 90%;
+    /* Змініть це значення відповідно до вашого випадку */
+}
+
+.feather {
+    width: 3%;
+    position: relative;/
+}
+
+/* Випадний список */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 10rem;
+    z-index: 1;
+    transition: 0.1s ease;
+    background-color: #e8a539a9;
+    top: 100%;
+    left: -30%;
+}
+
+.dropdown-content a {
+    color: #000000;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-content a:hover {
+    color: #000000;
+}
+
+/* 3 рисочки для гамбургер меню */
+.menu__btn {
+    cursor: pointer;
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    width: 36px;
+    height: 66px;
+    z-index: 23;
+}
+
+.menu__btn>span,
+.menu__btn>span::before,
+.menu__btn>span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    transition-duration: .25s;
+}
+
+.menu__btn>span::before {
+    content: '';
+    top: -8px;
+}
+
+.menu__btn>span::after {
+    content: '';
+    top: 8px;
+}
+
+/* приховане меню, яке з'явиться, коли екран буде меншим */
+.menu__box {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    background-color: var(--background-color);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    transition-duration: .25s;
+}
+
+
+/* для малих екранів */
+@media screen and (max-width: 1000px) {
+
+    .header a {
+        font-size: 1.5rem;
+        align-items: center;
+
+    }
+
+    .menu__toggle {
+        display: block;
+        visibility: hidden;
+    }
+
+    .menu__btn {
+        display: block;
+    }
+
+    #menu__toggle:checked+.menu__btn~.menu__box {
+        left: 0;
+    }
+
+    .menu__box ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+}
+
+/* для пристроїв 1001 піксель і більше */
+@media screen and (min-width: 1001px) {
+    .menu__toggle {
+        display: none;
+
+    }
+
+    .menu__btn {
+        display: none;
+    }
+
+    .menu__box {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        top: 4%;
+        left: 0;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    header a {
+        color: var(--color-main-text);
+        margin-right: 2vw;
+    }
+
+    header li {
+        margin: 0 1em 0 0;
+    }
+}
+
+/* усунення відступів та задання батьківського елемента для розміру */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-size: var(--parrent);
+    background-color: var(--primary-color);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar {
+    margin-top: 120px;
+    width: 20%;
+    padding: 20px;
+    background-color: #07ace8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; 
+}
+
+.sidebar h2 {
+    margin-bottom: 10px;
+}
+
+.main-content {
+    margin-top: 120px;
+    width: 65%;
+    padding: 20px;
+    background-color:var(--primary-color);
+}
+
+.news-item {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.news-item:hover {
+    font-weight: bold;
+}

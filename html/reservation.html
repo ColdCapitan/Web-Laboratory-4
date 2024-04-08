@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Суші Хаус - Бронювання столика</title>
+    <link rel="stylesheet" href="../styles/style_reservation.css">
+    <link rel="icon" href="../images/Піктограма.jpg" type="image/x-icon">
+</head>
+
+<body>
+    <header class="header">
+        <img class="header-logo" src="../images/logo.png" alt="Логотип">
+        <input id="menu__toggle" class="menu__toggle" type="checkbox"></input>
+        <label class="menu__btn" for="menu__toggle">
+            <span></span>
+        </label>
+        <nav class="menu__box">
+            <ul>
+                <li><a href="../index.html"> Головна сторінка </a></li>
+                <li><a href="../html/about.html"> Про нас </a></li>
+                <li class="dropdown">
+                    <a href="..html/menu.html">Меню &#9660;</a>
+                    <div class="dropdown-content">
+                        <a href="..html/menu.html">Роли</a>
+                        <a href="../html/menu.html">Напої</a>
+                        <a href="../html/menu.html">Десерти</a>
+                    </div>
+                </li>
+                <li><a href="../html/reservation.html" class="active">Бронювання столика</a></li>
+                <li><a href="../html/events.html">
+                        <img class="feather" src="../images/перо.jpg" alt="Події">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="background">
+        <h1 class="r">Бронювання столика</h1>
+        <a href="#id01" class="button">Зарезервувати столик</a>
+        <form class="window" id="id01">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button class="closebtn" onclick="location.href='#'">×</button>
+
+                    <label for="date">Дата та час:</label>
+                    <input type="datetime-local" name="date" required><br><br>
+
+                    <label for="guests">Кiлькiсть осiб:</label>
+                    <input type="number" name="guests" required min="1" max="30"><br><br>
+
+                    <label for="high_chairs">Кiлькiсть дитячих стільців (для дiтей до 6 рокiв):</label>
+                    <input type="number" name="high_chairs" required min="0" max="10"><br><br>
+
+                    <label for="allergies">Алергiї або особливi вимоги:</label>
+                    <input type="text" name="allergies"><br><br>
+
+                    <label for="occasion">Тематика бронювання :</label>
+                    <select name="occasion">
+                        <option value="birthday">День народження</option>
+                        <option value="anniversary">Річниця</option>
+                        <option value="date">Побачення</option>
+                        <option value="just meeting">Звичайна зустріч</option>
+                        <option value="other">Інше</option>
+                    </select><br><br>
+
+                    <label for="pre_order">Замовлення заздалегiдь:</label>
+                    <textarea name="pre_order" rows="4" cols="50"></textarea><br><br>
+
+                    <label for="contact_method">Вкажiть номер телефону для зв'язку з нами:</label>
+                    <input type="text" name="contact_method" required pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
+                        placeholder="xxx xxx xxxx"><br><br>
+                    <input type="submit" value="Забронювати" class="submit-btn">
+                </div>
+            </div>
+        </form>
+    </main>
+
+
+    <footer class="footer">
+        <div class="column_text">
+            <p>Суші хаус</p>
+            <p>Їжі для тіла недостатньо. Має бути їжа для душі.</p>
+        </div>
+
+        <ul class="column-info-menu">
+            <li>
+                <nav>
+                    <h6>Головне меню</h6>
+                    <ul>
+                        <li><a href="../html/about.html"> Про нас </a></li>
+                        <li><a href="../html/menu.html">Меню</a></li>
+                        <li><a href="../html/events.html">Події</a></li>
+                    </ul>
+                </nav>
+            </li>
+        </ul>
+
+        <ul class="column-info">
+            <li>
+                <nav>
+                    <h6>Інформація</h6>
+                    <ul>
+                        <li><a href="../html/about.html"> Контакти </a></li>
+                        <li><a href="../html/reservation.html">Бронювання</a></li>
+                    </ul>
+                </nav>
+            </li>
+        </ul>
+
+        <div class="column-adress">
+            <h6>Адреса</h6>
+            <a href="https://maps.app.goo.gl/TcUZKX6rT6oP2mjXA" target="_blank">
+                <address>м. Чернівці, вул. Головна, 265А</address>
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>

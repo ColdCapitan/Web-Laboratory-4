@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Суші Хаус</title>
+    <link rel="icon" href="../images/Піктограма.jpg" type="image/x-icon">
+</head>
+
+<body>
+    <section class="modal" id="myModal">
+        <div class="modal-content">
+            <h2>Отримайте знижку на ваше наступне замовлення!</h2>
+            <p>Підпишіться на наші повідомлення та отримайте 10% знижки на перше замовлення в нашому суші барі.</p>
+            <div class="modal-buttons">
+                <button class="accept" onclick="accept()">Підписатися</button>
+                <button class="reject" onclick="reject()">Відхилити</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="modal" class="modal_1">
+        <div class="modal-content">
+            <span class="close" id="closeButton">&times;</span>
+            <h2>Ласкаво просимо до нашого суші бару!</h2>
+            <p>Смакуйте справжні суші та японські страви у нашому суші барі! Ми горді представляти вам найсвіжіші та
+                найсмачніші інгредієнти, приготовані нашими майстрами з любов'ю та увагою до деталей.</p>
+            <p>Приходьте до нас і насолоджуйтесь атмосферою справжньої Японії та бездоганним смаком суші!</p>
+            <p id="countdownTimer">Зачекайте, щоб закрити... </p>
+        </div>
+    </section>
+
+    <header class="header">
+        <img class="header-logo" src="./images/logo.png" alt="Логотип">
+        <input id="menu__toggle" class="menu__toggle" type="checkbox" title="Menu">
+        <label class="menu__btn" for="menu__toggle">
+            <span></span>
+        </label>
+        <nav class="menu__box">
+            <ul>
+                <li><a href="../index.html" class="active">Головна сторінка</a></li>
+                <li><a href="../html/about.html">Про нас</a></li>
+                <li class="dropdown">
+                    <a href="../html/menu.html">Меню &#9660;</a>
+                    <div class="dropdown-content">
+                        <a href="../html/menu.html">Роли</a>
+                        <a href="#">Напої</a>
+                        <a href="#">Десерти</a>
+                    </div>
+                </li>
+                <li><a href="../html/reservation.html">Бронювання столика</a></li>
+                <li><a href="../html/events.html">
+                        <img class="feather" src="../images/перо.jpg" alt="Події">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+        <button id="openModal" title="Open registration modal"><img src="../images/Авторей.png" alt="Аватар користувача"
+                class="registration">
+        </button>
+        <dialog id="registrationModal" class="modal_1">
+            <div class="modal-content">
+                <button id="closeModal" class="close_1">&times;</button>
+                <h2>Реєстрація</h2>
+                <form id="registrationForm">
+                    <label for="username" id="userNameForm">Ім'я користувача:</label>
+                    <input type="text" id="username" name="username" required><br><br>
+                    <label for="email" id="emailForm">Електронна пошта:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="password" id="passwordForm">Пароль:</label>
+                    <input type="password" id="password" name="password" required><br><br>
+                    <button type="submit">Зареєструватися</button>
+                </form>
+            </div>
+        </dialog>
+
+        <button id="openaauthorizationModal" title="Open authorization modal"><img src="../images/auto.png"
+                alt="ключик для входу" class="authorization">
+        </button>
+        <dialog id="authorizationModal" class="modal_autho">
+            <div class="modal-content">
+                <button id="close_autho" class="close_autho">&times;</button>
+                <h2>Авторизація</h2>
+                <form id="loginForm">
+                    <label for="emailFogin">Email:</label><br>
+                    <input type="emailFogin" id="emailFogin" name="emailFogin" required><br>
+                    <label for="passwordFogin">Пароль:</label><br>
+                    <input type="passwordFogin" id="passwordFogin" name="passwordFogin" required><br><br>
+                    <button type="submit">Увійти</button>
+                </form>
+            </div>
+        </dialog>
+
+        <!-- Модальне вікно -->
+        <button id="adminButton" onclick="openadminModal()">
+            <img src="./images/plus_icon.png" alt="Додати користувача" class="plus">
+        </button>
+        <div id="adminModal" class="adminmodal">
+            <div class="admin_modal-content">
+                <span class="close_admin" onclick="closeadminModal()">&times;</span> <!-- Кнопка закриття -->
+                <h2>Управління користувачами</h2>
+                <div class="modal-buttons">
+                    <button onclick="displayUsers()">Показати користувачів</button>
+                    <div id="userList"></div>
+                    <button onclick="deleteUser()">Видалити користувача</button>
+                    <button onclick="addUser()">Додати користувача</button>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="face">
+            <h1 class="hero"> Суші <span class="hero_1">Хаус</span></h1>
+            <h2 class="credo">ВІДЧУЙТЕ <span class="credo_2">НЕПОВТОРНИЙ</span> СМАК <span class="credo_2">ОКЕАНУ</span>
+            </h2>
+        </section>
+
+        <section class="popularity">
+            <h2>Популярне</h2>
+            <ul class="column">
+                <li>
+                    <img src="../images/Креветка.png" title="Sushi)))">
+                    <h2> Нігірі</h2>
+                    <p> Маленькі рисові кульки з рибою, молюсками тощо зверху.
+                        Існує незліченна кількість різновидів нігірізуші, деякі з
+                        найпоширеніші - з тунцем, креветками, вугром,
+                        кальмари, восьминоги та смажене яйце.</p>
+                    <del>780</del><ins class="discount">650</ins>
+                </li>
+
+                <li>
+                    <img src="../images/Футумакі.png" title="Sushi)))">
+                    <h2> Футомакі</h2>
+                    <p> Рис для суші, морепродукти і т.д., загорнуті в сушені водорості
+                        листами. Існує незліченна кількість різновидів суші-ролів
+                        що відрізняються інгредієнтами та товщиною. Суші роли
+                        приготовані "навиворіт", дуже популярні за межами
+                        Японії, але рідко зустрічаються в самій Японії.</p>
+                    <del>880</del><ins class="discount">770</ins>
+                </li>
+            </ul>
+        </section>
+
+        <section class="quote">
+            <h2> Вітаємо у Суші Хаус </h2>
+            <blockquote>
+                <p>Перш за все, я шеф-кухар, чи то за плитою в одному з моїх ресторанів у Північній Каліфорнії, чи
+                    останні 15 років перед камерою в моїх кулінарних шоу на Food Network. Я створюю нові страви та
+                    смакові
+                    і смакових поєднань, які приносять задоволення кухарям і гостям наших ресторанів, - це моя
+                    робота, і
+                    я люблю її.</p>
+                <p><cite>R. Tyler Florence</cite> </p>
+            </blockquote>
+        </section>
+
+        <section class="list">
+            <header class="menu-header">
+                <h2>Меню</h2>
+            </header>
+            <ul>
+                <li>
+                    <img src="../images/01.png" alt="Фото 1">
+                    <h4>Хамагурі</h4>
+                    <div class="data"></div>
+                </li>
+                <li>
+                    <img src="../images/02.png" alt="Фото 2">
+                    <h4>Макі</h4>
+                    <div class="data"></div>
+                </li>
+                <li>
+                    <img src="../images/03.png" alt="Фото 3">
+                    <h4>Темакі</h4>
+                    <div class="data"></div>
+                </li>
+                <li>
+                    <img src="../images/04.png" alt="Фото 4">
+                    <h4>Урамакі</h4>
+                    <div class="data"></div>
+                </li>
+                <li>
+                    <img src="../images/05.png" alt="Фото 5">
+                    <h4>Футомакі</h4>
+                    <div class="data"></div>
+                </li>
+                <li>
+                    <img src="../images/06.png" alt="Фото 6">
+                    <h4>Інарісуші</h4>
+                    <div class="data"></div>
+                </li>
+            </ul>
+
+            <input type="checkbox" id="show-checkbox" class="show-checkbox">
+            <label for="show-checkbox" class="show-label">Більше...</label>
+            <div class="description-content">
+                <ul>
+                    <li>
+                        <img src="../images/07.png" alt="Фото 7">
+                        <h4>Чірашізуші</h4>
+                        <div class="data"></div>
+                    </li>
+                    <li>
+                        <img src="../images/08.png" alt="Фото 8">
+                        <h4>Хосомакі</h4>
+                        <div class="data"></div>
+                    </li>
+                    <li>
+                        <img src="../images/09.png" alt="Фото 9">
+                        <h4>Кольорові суші сет</h4>
+                        <div class="data"></div>
+                    </li>
+                    <li><a href="html/menu.html"> Переглянути повне меню </a></li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="history">
+            <h3> Історія </h3>
+            <h2>Шеф-кухар суші: Кійокава</h2>
+            <p>Після майже 20 років в Місті Ангелів суші-шеф Сатоші Кійокава став одним з головних гравців на суші-сцені
+                Лос-Анджелеса з-за прилавка свого ресторану "Go By Kiyokawa" на Беверлі-Хіллз. Кійокава черпає натхнення
+                з простих речей у житті, але його їжа не є чимось звичайним. Стиль Кійокави, що спирається на його
+                виховання в японському місті Кобе, глибоко вкорінений у традиційні японські звичаї, а саме глибоко
+                вкорінений у традиційних японських практиках. Використовуючи власну творчість, він створив справді
+                унікальний досвід: такі страви, як його "копчений" лосось нігірі та вирізблені вручну чаші для льоду,
+                завоювали йому вірних прихильників серед жителів Лос-Анджелеса. Зосереджуючись на унікальній презентації
+                та використовуючи рибу найвищої якості у місті, яке відоме своїми суші, Кійокава пропонує розважальний,
+                але інтимний досвід суші в самому серці Лос-Анджелеса.
+            </p>
+            <ul class="gallery">
+                <li class="item_1"><img src="../images/Rectangle 10.png" title="Sushi)))"></li>
+                <li class="item_2"><img src="../images/Rectangle 11.png" title="Sushi)))"></li>
+                <li class="item_3"><img src="../images/Rectangle 12.png" title="Sushi)))"></li>
+                <li class="item_4"><img src="../images/Rectangle 13.jpg" title="Sushi)))"></li>
+                <li class="item_5"><img src="../images/Rectangle 14.png" title="Sushi)))"></li>
+                <li class="item_6"><img src="../images/Rectangle 15.jpg" title="Sushi)))"></li>
+            </ul>
+        </section>
+
+        <section class="reservation">
+            <h3>Забронюйте столик</h3>
+            <p>Незалежно від того, чи плануєте ви близьку вечерю для друзів, чи корпоративний обід, чи
+                екстравагантну
+                вечірку, ви знайдете ідеальну обстановку в Суші-Хаусі.</p>
+            <a href="html/reservation.html">
+                <p>Зробити бронювання</p>
+            </a>
+            <p>ЗА ДОДАТКОВИМИ ПИТАННЯМИ, БУДЬ ЛАСКА, ТЕЛЕФОНУЙТЕ</p>
+            <a href="tel:+21168750441" class="phone"> 2 (116) 875-04-41 </a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="column_text">
+            <p>Суші хаус</p>
+            <p>Їжі для тіла недостатньо. Має бути їжа для душі.</p>
+        </div>
+
+        <ul class="column-info-menu">
+            <li>
+                <nav>
+                    <h6>Головне меню</h6>
+                    <ul>
+                        <li><a href="/html/about.html"> Про нас </a></li>
+                        <li><a href="/html/menu.html">Меню</a></li>
+                        <li><a href="/html/events.html">Події</a></li>
+                    </ul>
+                </nav>
+            </li>
+        </ul>
+
+        <ul class="column-info">
+            <li>
+                <nav>
+                    <h6>Інформація</h6>
+                    <ul>
+                        <li><a href="/html/about.html"> Контакти </a></li>
+                        <li><a href="/html/reservation.html">Бронювання</a></li>
+                    </ul>
+                </nav>
+            </li>
+        </ul>
+
+        <div class="column-adress">
+            <h6>Адреса</h6>
+            <a href="https://maps.app.goo.gl/TcUZKX6rT6oP2mjXA" target="_blank">
+                <address>м. Чернівці, вул. Головна, 265А</address>
+            </a>
+        </div>
+    </footer>
+    <script src="./scripts/script.js"></script>
+</body>
+
+</html>

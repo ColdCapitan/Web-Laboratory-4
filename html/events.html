@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style_events.css">
+    <title>Останні новини</title>
+    <link rel="icon" href="../images/Піктограма.jpg" type="image/x-icon">
+</head>
+
+<body>
+    <header class="header">
+        <img class="header-logo" src="../images/logo.png" alt="Логотип">
+        <input id="menu__toggle" class="menu__toggle" type="checkbox"></input>
+        <label class="menu__btn" for="menu__toggle">
+            <span></span>
+        </label>
+        <nav class="menu__box">
+            <ul>
+                <li><a href="../index.html" class="active">Головна сторінка</a></li>
+                <li><a href="../html/about.html">Про нас</a></li>
+                <li class="dropdown">
+                    <a href="../html/menu.html">Меню &#9660;</a>
+                    <div class="dropdown-content">
+                        <a href="../html/menu.html">Роли</a>
+                        <a href="#">Напої</a>
+                        <a href="#">Десерти</a>
+                    </div>
+                </li>
+                <li><a href="../html/reservation.html">Бронювання столика</a></li>
+                <li><a href="../html/events.html">
+                        <img class="feather" src="../images/перо.jpg" alt="Події">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="sidebar">
+            <h2>Останні новини</h2>
+            <ul id="news-list"> </ul>
+        </section>
+        <section class="main-content" id="news-details"></section>
+    </main>
+    <script src="../scripts/news.js"></script>
+</body>
+
+</html>

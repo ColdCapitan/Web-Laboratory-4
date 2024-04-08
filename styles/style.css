@@ -1,0 +1,1322 @@
+/* під'єднання шрифтів */
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'TLHeader';
+    src: url('../fonts/TLHeader.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Acme';
+    src: url('../fonts/Acme.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins.ttf') format('truetype');
+}
+
+/* псевдоклас для змінних */
+:root {
+    /* змінні для шрифтів*/
+    --font-family-poppins: 'Poppins';
+    --font-family-lato: 'Lato';
+    --font-family-montserrat: 'Montserrat';
+    --font-family-acme: 'Acme';
+    --font-family-tlheader: 'TLHeader';
+    /* змінні для кольорів */
+    --background-color: #000000b3;
+    --primary-color: #A6E3E9;
+    --color-for-menu: #CBF1F5;
+    --color-main-text: #ffffff;
+    --color-secondary-text: #E8A639;
+    /* змінні для розташування та розмірів */
+    --align-right: right;
+    --align-center: center;
+    --position-absolute: absolute;
+    --parrent: 16px;
+}
+
+/* створення інформаційної панелі */
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: var(--background-color);
+    z-index: 10;
+    transition: transform 0.3s;
+}
+
+/* текст посилань */
+header a {
+    text-decoration: none;
+    color: var(--color-main-text);
+    transition: 0.25s ease;
+    margin-right: 1.3rem;
+}
+
+/* коректне задання елементів списку */
+header li {
+    display: inline;
+    font-family: var(--font-family-lato);
+    font-size: 1.25rem;
+    text-align: var(--align-right);
+    text-decoration: none;
+    margin: 0 0.75em 0 0.75em;
+}
+
+header ul:hover a {
+    color: #341f04;
+}
+
+header ul:hover a:hover {
+    color: var(--color-secondary-text);
+    box-shadow: 0 2px 0 0 currentColor;
+}
+
+.active {
+    color: var(--color-secondary-text);
+}
+
+.header-logo {
+    position: relative;
+    top: 0.7rem;
+    left: 90%; /* Змініть це значення відповідно до вашого випадку */
+}
+
+.feather {
+    width: 3%;
+    position: relative; /
+}
+
+/* Випадний список */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 10rem;
+    z-index: 1;
+    transition: 0.1s ease;
+    background-color: #e8a539a9;
+    top: 100%;
+    left: -30%;
+}
+
+.dropdown-content a {
+    color: #000000;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-content a:hover {
+    color: #000000;
+}
+
+/* 3 рисочки для гамбургер меню */
+.menu__btn {
+    cursor: pointer;
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    width: 36px;
+    height: 66px;
+    z-index: 23;
+}
+
+.menu__btn>span,
+.menu__btn>span::before,
+.menu__btn>span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    transition-duration: .25s;
+}
+
+.menu__btn>span::before {
+    content: '';
+    top: -8px;
+}
+
+.menu__btn>span::after {
+    content: '';
+    top: 8px;
+}
+
+/* приховане меню, яке з'явиться, коли екран буде меншим */
+.menu__box {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    background-color: var(--background-color);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    transition-duration: .25s;
+}
+
+
+/* для малих екранів */
+@media screen and (max-width: 1000px) {
+
+    .header a {
+        font-size: 1.5rem;
+        align-items: center;
+
+    }
+
+    .menu__toggle {
+        display: block;
+        visibility: hidden;
+    }
+
+    .menu__btn {
+        display: block;
+    }
+
+    #menu__toggle:checked+.menu__btn~.menu__box {
+        left: 0;
+    }
+
+    .menu__box ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+}
+
+/* для пристроїв 1001 піксель і більше */
+@media screen and (min-width: 1001px) {
+    .menu__toggle {
+        display: none;
+
+    }
+
+    .menu__btn {
+        display: none;
+    }
+
+    .menu__box {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        top: 4%;
+        left: 0;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    header a {
+        color: var(--color-main-text);
+        margin-right: 2vw;
+    }
+
+    header li {
+        margin: 0 1em 0 0;
+    }
+}
+
+/* усунення відступів та задання батьківського елемента для розміру */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-size: var(--parrent);
+}
+
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-secondary-text);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+  }
+
+/* Стилі для фонового зображення на головній сторінці */
+.face {
+    display: flex;
+    background-image: url('../images/Background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: var(--color-main-text);
+}
+
+/* написання назви для назви закладу */
+.hero,
+.hero_1 {
+    text-align: var(--align-center);
+    font-family: var(--font-family-tlheader);
+    position: var(--position-absolute);
+}
+
+.hero {
+    font-size: 11.625em;
+    top: 10%;
+    left: 0;
+    right: 22.5rem;
+    color: var(--color-main-text);
+}
+
+.hero_1 {
+    text-align: var(--align-right);
+    font-size: 9.75rem;
+    top: 70%;
+    color: var(--color-secondary-text);
+}
+
+/* для екранів шириною до 800px */
+@media screen and (max-width: 800px) {
+    .face {
+        height: 80vh;
+    }
+
+    .hero {
+        font-size: 4rem;
+        top: 20%;
+        left: 150px;
+        color: var(--color-main-text);
+    }
+
+    .hero_1 {
+        text-align: var(--align-right);
+        font-size: 3.5rem;
+        top: 70%;
+        color: var(--color-secondary-text);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .face {
+        height: 70vh;
+    }
+
+    .hero {
+        font-size: 4rem;
+        top: 20%;
+        left: 100px;
+        color: var(--color-main-text);
+    }
+
+    .hero_1 {
+        text-align: var(--align-right);
+        font-size: 2.5rem;
+        left: 120px;
+        color: var(--color-secondary-text);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .hero {
+        font-size: 2.5rem;
+        top: 25%;
+        color: var(--color-main-text);
+    }
+
+    .hero_1 {
+        text-align: var(--align-right);
+        font-size: 1.5rem;
+        color: var(--color-secondary-text);
+        left: 5%;
+    }
+}
+
+/* написання лозунгу для закладу */
+.credo,
+.credo_2 {
+    text-align: var(--align-center);
+    font-family: var(--font-family-montserrat);
+    text-decoration: underline;
+    top: 83%;
+    left: 0;
+    right: 0;
+    font-size: 4rem;
+}
+
+.credo {
+    position: var(--position-absolute);
+    color: var(--color-main-text);
+}
+
+.credo_2 {
+    color: var(--color-secondary-text);
+}
+
+@media screen and (max-width: 1420px) {
+
+    .credo,
+    .credo_2 {
+        font-size: 3rem;
+        top: 85%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    .credo,
+    .credo_2 {
+        font-size: 2rem;
+        top: 87%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .credo,
+    .credo_2 {
+        font-size: 1.5rem;
+        top: 70%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .credo,
+    .credo_2 {
+        font-size: 0.9rem;
+        top: 55%;
+    }
+}
+
+
+/* встановлення фону для всього main */
+.main {
+    background-color: var(--primary-color);
+}
+
+/* параметри для фону секції з популярним */
+.popularity {
+    background: var(--color-for-menu);
+    background-image: url('../images/Sticks.png'), url('../images/branch.png'), url('../images/branch2.png');
+    background-repeat: no-repeat;
+    background-position: center 50px, right top -50px, left bottom;
+    font-family: var(--font-family-tlheader);
+    font-size: 3.125rem;
+    text-align: var(--align-center);
+}
+
+/* створення колонок та налаштування тексту */
+.column {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.column li {
+    flex: 1;
+    flex-basis: 10%;
+    box-sizing: border-box;
+    margin: 3.125rem 6rem;
+}
+
+.column h2 {
+    font-size: 4.375rem;
+}
+
+.column p {
+    font-family: var(--font-family-montserrat);
+    font-size: 1.25rem;
+}
+
+/* Акційна ціна */
+.discount {
+    color: var(--color-secondary-text);
+    font-weight: bold;
+    display: inline-block;
+    transition: transform 1s;
+    transform-origin: left;
+    text-decoration: none;
+}
+
+.discount:hover {
+    transform: scale(2);
+}
+
+@media screen and (max-width: 1200px) {
+    .popularity {
+        background-image: url('../images/branch.png'), url('../images/branch2.png');
+        background-repeat: no-repeat;
+        background-size: 40%;
+        background-position: right top, left bottom;
+        font-size: 2rem;
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+    .column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .column li {
+        margin: 1rem;
+        clear: both;
+    }
+
+    .column h2 {
+        font-size: 2.5rem;
+    }
+
+    .column p {
+        font-size: 1rem;
+        clear: both;
+        width: 100%;
+    }
+
+    .column img {
+        width: 70%;
+
+    }
+}
+
+/* налаштування цитати */
+.quote {
+    font-family: var(--font-family-montserrat);
+    font-size: 1.875rem;
+    text-align: var(--align-center);
+    background-image: url('../images/branch.png'), url('../images/branch2.png');
+    background-repeat: no-repeat;
+    background-position: left 230px, right top -50px;
+    height: 90vh;
+}
+
+.quote blockquote p::before {
+    content: open-quote;
+}
+
+.quote blockquote p::after {
+    content: close-quote;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 750px) {
+    .quote {
+        font-size: 1.5rem;
+        height: 70vh;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .quote {
+        font-family: var(--font-family-montserrat);
+        font-size: 1rem;
+        text-align: var(--align-center);
+        background-image: url('../images/branch.png'), url('../images/branch2.png');
+        background-repeat: no-repeat;
+        background-size: 200px auto, 200px auto;
+    }
+
+}
+
+/* допоміжний хедер для менюшки */
+.menu-header {
+    background-image: url('../images/menu.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 43.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: var(--font-family-montserrat);
+    font-size: 6rem;
+    color: var(--color-main-text);
+}
+
+.menu-header h2::before,
+.menu-header h2::after {
+    content: "______";
+    width: 10%
+}
+
+@media screen and (max-width: 1500px) {
+    .menu-header {
+        font-size: 5rem;
+        height: 38.75rem;
+    }
+
+    .menu-header h2::before,
+    .menu-header h2::after {
+        content: "______";
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .menu-header {
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .menu-header {
+        font-size: 3rem;
+        height: 33.75rem;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .menu-header {
+        font-size: 2rem;
+        height: 23.75rem;
+    }
+
+    .menu-header h2::before,
+    .menu-header h2::after {
+        content: "___";
+    }
+}
+
+/* налаштування фотографій */
+.list ul {
+    display: flex;
+    background-color: var(--color-for-menu);
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.list li {
+    font-family: var(--font-family-montserrat);
+    text-align: var(--align-center);
+    margin: 1rem;
+}
+
+li h4 {
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.list img {
+    max-width: 100%;
+    height: auto;
+}
+
+.show-checkbox {
+    opacity: 0;
+}
+
+.show-label {
+    font-family: var(--font-family-tlheader);
+    background-color: var(--color-secondary-text);
+    color: #000000;
+    padding: 0.625rem 1.25rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 10px;
+}
+
+.show-checkbox:checked+.show-label {
+    opacity: 0;
+}
+
+.description-content {
+    display: none;
+    background-color: var(--color-for-menu);
+}
+
+.show-checkbox:checked+.show-label+.description-content {
+    display: block;
+    background-color: var(--color-for-menu);
+}
+
+.description-content li a {
+    text-decoration: none;
+    color: var(--color-secondary-text);
+    transition: 0.25s ease;
+    font-size: 1.5rem;
+    /* Зменшено розмір шрифту */
+}
+
+.description-content li a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 550px) {
+    .list li {
+        margin: 0.5rem;
+    }
+
+    li h4 {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .show-label {
+        padding: 0.5rem 1rem;
+    }
+
+    .description-content li a {
+        font-size: 1.2rem;
+    }
+}
+
+.history h3,
+.history h2,
+.history p {
+    text-align: var(--align-center);
+    font-family: var(--font-family-montserrat);
+    font-weight: 400;
+    line-height: normal;
+}
+
+.history h3 {
+    font-size: 4rem;
+    text-decoration-line: underline;
+}
+
+.history h2 {
+    font-size: 4.375rem;
+}
+
+.history p {
+    font-size: 1.8925rem;
+}
+
+.history ul {
+    list-style: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .history h3 {
+        font-size: 3rem;
+        text-decoration-line: underline;
+    }
+
+    .history h2 {
+        font-size: 3.375rem;
+    }
+
+    .history p {
+        font-size: 0.8925rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .history h3 {
+        font-size: 2rem;
+        text-decoration-line: underline;
+    }
+
+    .history h2 {
+        font-size: 2.375rem;
+    }
+
+    .history p {
+        font-size: 0.8925rem;
+    }
+}
+
+/* Галерея грідом */
+.gallery {
+    display: grid;
+    grid-auto-rows: minmax(395px, auto);
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    margin: 25px;
+    padding: 5px;
+}
+
+.gallery li {
+    overflow: hidden;
+}
+
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item_1 {
+    grid-column: 1;
+    grid-row: 1 / span 1;
+}
+
+.item_2 {
+    grid-column: 1;
+    grid-row: 2 / span 1;
+}
+
+.item_3 {
+    grid-column: 1;
+    grid-row: 3 / span 1;
+}
+
+.item_4 {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+}
+
+.item_5 {
+    grid-column: 2;
+    grid-row: 3 / span 1;
+}
+
+.item_6 {
+    grid-column: 3;
+    grid-row: 1 / span 3;
+}
+
+@media screen and (max-width: 1000px) {
+    .gallery {
+        grid-auto-rows: minmax(195px, auto);
+        margin: 15px;
+        padding: 3px;
+
+    }
+
+    .gallery li {
+        margin-bottom: 1px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .gallery {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 15px;
+        padding: 3px;
+    }
+
+    .gallery img {
+        width: 70%;
+        height: 70%;
+    }
+
+    .item_1,
+    .item_2,
+    .item_3,
+    .item_4,
+    .item_5,
+    .item_6 {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* стилізація тексту та фону для бронювальної секції */
+.reservation {
+    background-image: url(../images/reservation.jpg);
+    width: 100%;
+    height: 50rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reservation::before {
+    content: "";
+    position: var(--position-absolute);
+    width: 100%;
+    height: 100%;
+    background-color: #808080c4;
+    z-index: 0;
+}
+
+.reservation * {
+    z-index: 1;
+    text-align: var(--align-center);
+    font-family: var(--font-family-montserrat);
+    font-weight: 400;
+    line-height: normal;
+    color: inherit;
+}
+
+.reservation h3,
+.reservation a {
+    font-size: 3.75rem;
+    text-decoration-line: underline;
+    color: inherit;
+}
+
+.reservation p {
+    font-size: 1.40625rem;
+}
+
+.reservation .phone {
+    font-size: 0.859375rem;
+    position: relative;
+    z-index: 2;
+    text-align: var(--align-center);
+}
+
+@media screen and (max-width: 650px) {
+
+    .reservation h3,
+    .reservation a {
+        font-size: 2.75rem;
+    }
+
+    .reservation p {
+        font-size: 1rem;
+    }
+
+    .reservation .phone {
+        font-size: 0.4rem;
+    }
+}
+
+/* Футор */
+.footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--primary-color);
+    font-family: var(--font-family-montserrat);
+}
+
+.footer ul {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
+
+.column_text,
+.column-info-menu,
+.column-info,
+.column-adress {
+    margin: 30px;
+    flex: 1;
+    text-align: left;
+}
+
+.column_text {
+    font-family: var(--font-family-acme);
+    font-size: 1.5rem;
+    padding-left: 4rem;
+    max-width: 20%;
+}
+
+.column-info-menu,
+.column-info {
+    list-style: none;
+    font-family: var(--font-family-poppins);
+}
+
+.column-info-menu h6,
+.column-info h6,
+.column-adress h6 {
+    font-family: var(--font-family-acme);
+    margin: 0;
+    font-size: 1.5625rem;
+}
+
+.column-info-menu ul li a,
+.column-info ul li a {
+    text-decoration: none;
+    color: inherit;
+    text-align: var(--align-center);
+    font-size: 1.5625rem;
+}
+
+.column-info-menu ul li a:hover,
+.column-info ul li a:hover {
+    text-decoration: underline;
+    color: var(--color-secondary-text);
+}
+
+.column-adress {
+    padding-left: 4rem;
+}
+
+.column-adress a {
+    text-decoration: none;
+    color: inherit;
+    text-align: left;
+    font-size: 1.375rem;
+}
+
+@media screen and (max-width: 800px) {
+
+    .column-info-menu h6,
+    .column-info h6,
+    .column-adress h6 {
+        font-family: var(--font-family-acme);
+        margin: 0;
+        padding: 5px;
+        font-size: 1.4rem;
+    }
+
+    .column-adress {
+        padding-left: 1rem;
+    }
+
+    .column-info-menu ul li a,
+    .column-info ul li a {
+        text-decoration: none;
+        color: inherit;
+        text-align: var(--align-center);
+        font-size: 1.3rem;
+    }
+
+    .column-adress a {
+        text-decoration: none;
+        color: inherit;
+        text-align: left;
+        font-size: 1rem;
+    }
+
+    .column_text {
+        font-family: var(--font-family-acme);
+        font-size: 1.1rem;
+        padding-left: 2rem;
+        max-width: 20%;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+    .footer {
+        display: block;
+        justify-content: space-around;
+        background-color: var(--primary-color);
+        font-family: var(--font-family-montserrat);
+        margin: 0;
+        padding: 0;
+    }
+
+    .footer ul {
+        list-style: none;
+        text-align: left;
+    }
+
+    .column_text,
+    .column-info-menu,
+    .column-info,
+    .column-adress {
+        margin: 0;
+        flex: 1;
+        text-align: left;
+        position: relative;
+    }
+
+    .column_text {
+        display: inline;
+        font-family: var(--font-family-acme);
+        font-size: 1.3rem;
+        padding-left: 2rem;
+    }
+
+    .column-info-menu,
+    .column-info {
+        list-style: none;
+        font-family: var(--font-family-poppins);
+    }
+
+    .column-info-menu ul,
+    .column-info ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+    }
+
+    .column-info-menu:hover ul,
+    .column-info:hover ul {
+        display: block;
+    }
+
+    .column-info-menu ul li a,
+    .column-info ul li a {
+        text-decoration: none;
+        color: inherit;
+        text-align: var(--align-center);
+        font-size: 1.5625rem;
+    }
+
+    .column-info-menu ul li a:hover,
+    .column-info ul li a:hover {
+        text-decoration: underline;
+        color: var(--color-secondary-text);
+    }
+
+    .column-adress h6 {
+        display: none;
+    }
+
+    .column-adress a {
+        margin: 2px;
+        text-decoration: none;
+        color: inherit;
+        text-align: center;
+        font-size: 1.375rem;
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Стилі для кнопок */
+.modal-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.modal-buttons button.accept {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.modal-buttons button.reject {
+    background-color: #f44336;
+    color: #fff;
+}
+
+ /* Стилі для модального вікна */
+.modal_1 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: auto;
+ 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.registration {
+    position: fixed;
+    width: 4%;
+    height: 10%;
+    bottom: 1%;
+}
+
+.modal_1 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+
+.close_1 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_1:hover,
+.close_1:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.authorization {
+    position: fixed;
+    width: 4%;
+    height: 10%;
+    bottom: 15%;
+}
+
+/* Стилі для модального вікна */
+#authorizationModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Стилі для кнопки закриття модального вікна */
+.close_autho {
+    color: #250303;
+    float:right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_autho:hover,
+.close_autho:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Стилі для кнопки "Увійти" */
+#loginForm button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#loginForm button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+/* Стилізація модального вікна */
+.adminmodal {
+    display: none; /* Початково ховаємо модальне вікно */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+  /* Стилізація контенту модального вікна */
+  .admin_modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+  }
+  
+  /* Стилізація кнопки закриття */
+  .close_admin {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close_admin:hover,
+  .close_admin:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Стилізація кнопок управління користувачами */
+  .modal-buttons {
+    text-align: center;
+  }
+  
+  .modal-buttons button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .modal-buttons button:hover {
+    background-color: #0056b3;
+  }
+
+.plus{
+    position: fixed;
+    width: 4%;
+    height: 10%;
+    bottom: 25%;
+    right: 2%;
+    
+}

@@ -1,0 +1,43 @@
+[
+  {
+    "userName": "Маша",
+    "email": "Sania_Kyrstiuk@gmail.com",
+    "password": "123456h",
+    "role": "customer"
+  },
+  {
+    "userName": "Cfuf",
+    "email": "Sania_k@gmail.com",
+    "password": "fgvjervioe24",
+    "role": "customer"
+  },
+  {
+    "userName": "zx",
+    "email": "wdwfjw@sdsv.com",
+    "password": "123hfewtv",
+    "role": "customer"
+  },
+  {
+    "userName": "Вовчик",
+    "email": "Bratchik@gmail.ua",
+    "password": "1234321asd",
+    "role": "admin"
+  },
+  {
+    "userName": "фпвр",
+    "email": "dfshg@fdf.htg",
+    "password": "sadsfgf543",
+    "role": "customer"
+  },
+  {
+    "userName": "Тестовик",
+    "email": "Test@gamil.com",
+    "password": "23432hfg"
+  },
+  {
+    "userName": "Василько",
+    "email": "vasyl@gmail.com",
+    "password": "1232dfg",
+    "role": "customer"
+  }
+]
